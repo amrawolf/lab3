@@ -1,3 +1,5 @@
+#Україна україна чел чел чел чел мда ех ех ех
+
 from collections import Counter
 
 #Алфавітний порядок
@@ -9,7 +11,7 @@ def sort_words(input):
     text = [w[len(w)//2:] for w in text]
     return ' '.join(text)
 
-print('Choose a, b ,c: ')
+print('a: Сортувати в алфавітному порядку \nb: Топ5 слів \nc: Найдовші слова \nВиберіть операцію: ')
 choose = input()
 
 print("Text: ")
@@ -18,23 +20,28 @@ text = input()
 if choose =='a':
     print(sort_words(text))
 
-## СЛОВА ПО КІЛЬКОСТІ СИМВОЛІВ
+#Top5
 
-#text=str(input("Enter text: "))
-#newList = sorted(text)
-#n=sorted(text.split())
-#print(n)
-#w=text.split()
-#e=""
-#for r in sorted(w):
-    #e=e+" " +r
-#print(e)
-#l = text.split()
-#q=""
-#for i in sorted(l,key=lambda a: len(a)):
-    #q = q + " " + i
-#print(q)
+if choose == "b":
+    lst_no = ['.', ',', ':', '!', '"', "'", '[', ']', '-', '—', '(', ')']
+    lst = []
 
-if choose == 'b':
-    d = Counter(text)
-    print(d)
+    for text in text.lower().split():
+        if not text in lst_no:
+            _word = text
+            if text[-1] in lst_no:
+                _word = _word[:-1]
+            if text[0] in lst_no:
+                _word = _word[1:]
+            lst.append(_word)
+    _dict = dict()
+    for text in lst:
+        _dict[text] = _dict.get(text, 0) + 1
+
+    _list = []
+    for key, value in _dict.items():
+        _list.append((value, key))
+        _list.sort(reverse=True)
+
+    for freq, text in _list[0:5]:
+        print(f'{text:>10} -> {freq:>3}')
