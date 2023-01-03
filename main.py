@@ -60,5 +60,5 @@ while True:
         k = (convert(q))
         print(k[0:6])
     else:
-        print("Виберіть одну із запропонованих операцій!")
-        break
+        print("Виберіть одну із запропонованих операцій! \n")
+        continue
