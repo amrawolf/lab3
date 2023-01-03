@@ -1,5 +1,9 @@
 #Україна україна чел чел чел чел мда ех ех ех
 
+def convert(string):
+    li = list(string.split(" "))
+    return li
+
 #Алфавітний порядок
 
 def sort_words(input):
@@ -46,10 +50,15 @@ while True:
 
 #Найдовше слово
 
-    elif choose == 'c':
+
+    elif choose == "c":
         d = text.lower
         l = text.split()
         q = ""
         for i in sorted(l, key=lambda b: len(b), reverse=True):
             q = q + " " + i
-        print(q[0:9])
+        k = (convert(q))
+        print(k[0:6])
+    else:
+        print("Виберіть одну із запропонованих операцій!")
+        break
